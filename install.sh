@@ -13,7 +13,7 @@
 
 set -euo pipefail
 
-REPO_RAW="${CLAUDE_MD_REPO_RAW:-https://raw.githubusercontent.com/<your-username>/production-agent-md/main}"
+REPO_RAW="${CLAUDE_MD_REPO_RAW:-https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main}"
 SCOPE="${1:-personal}"
 
 case "$SCOPE" in

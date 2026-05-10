@@ -20,7 +20,7 @@ self-correction.
 **Claude Code personal scope** (all projects on your machine):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<your-username>/production-agent-md/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/install.sh | bash
 ```
 
 This installs `CLAUDE.md` to `~/.claude/CLAUDE.md`.
@@ -28,7 +28,7 @@ This installs `CLAUDE.md` to `~/.claude/CLAUDE.md`.
 **Project scope for Claude Code + Codex**:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<your-username>/production-agent-md/main/install.sh | bash -s -- project
+curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/install.sh | bash -s -- project
 ```
 
 This installs:
@@ -52,26 +52,26 @@ For Claude Code personal scope:
 
 ```bash
 mkdir -p ~/.claude
-curl -fsSL https://raw.githubusercontent.com/<your-username>/production-agent-md/main/CLAUDE.md \
+curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/CLAUDE.md \
   -o ~/.claude/CLAUDE.md
 ```
 
 For a project that should work in both Claude Code and Codex:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/<your-username>/production-agent-md/main/CLAUDE.md \
+curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/CLAUDE.md \
   -o ./CLAUDE.md
 cp ./CLAUDE.md ./AGENTS.md
-curl -fsSL https://raw.githubusercontent.com/<your-username>/production-agent-md/main/templates/gotchas.md \
+curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/templates/gotchas.md \
   -o ./gotchas.md
-curl -fsSL https://raw.githubusercontent.com/<your-username>/production-agent-md/main/templates/context-log.md \
+curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/templates/context-log.md \
   -o ./context-log.md
 ```
 
 Or clone the repo and copy what you want:
 
 ```bash
-git clone https://github.com/<your-username>/production-agent-md.git
+git clone https://github.com/trivedi-vatsal/production-agent-md.git
 cp production-agent-md/CLAUDE.md ~/.claude/CLAUDE.md
 cp production-agent-md/CLAUDE.md ./AGENTS.md
 cp production-agent-md/templates/gotchas.md ./gotchas.md
@@ -156,7 +156,7 @@ Good starting knobs to tweak:
 - Phase size (`max 5 files`)
 - Sub-agent fan-out (`5-8 files per agent`)
 
-If you're publishing your own fork, replace `<your-username>` in the
+If you're publishing your own fork, replace `trivedi-vatsal` in the
 commands above with your GitHub username.
 
 ---

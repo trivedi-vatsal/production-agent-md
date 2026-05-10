@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 #
-# Install CLAUDE.md to personal (~/.claude/) or project (./) scope.
-# In project scope, mirror the same content to AGENTS.md for Codex and
-# seed starter session-artifact files from templates/.
+# Install CLAUDE.md into the current repo/folder by default.
+# Mirror the same content to AGENTS.md for Codex and seed starter
+# session-artifact files from templates/.
 #
 # Usage:
-#   install.sh             # personal scope (default)
-#   install.sh personal    # explicit personal
-#   install.sh project     # current directory
+#   install.sh             # current directory (default)
+#   install.sh project     # explicit current directory
+#   install.sh personal    # optional global ~/.claude install
 #
 # Override the source repo with CLAUDE_MD_REPO_RAW.
 
 set -euo pipefail
 
 REPO_RAW="${CLAUDE_MD_REPO_RAW:-https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main}"
-SCOPE="${1:-personal}"
+SCOPE="${1:-project}"
 
 case "$SCOPE" in
   personal)

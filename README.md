@@ -17,18 +17,12 @@ self-correction.
 
 ## Install
 
-**Claude Code personal scope** (all projects on your machine):
+Run this inside the repo or folder where you want the files installed.
+
+**Repo / folder scope**:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/install.sh | bash
-```
-
-This installs `CLAUDE.md` to `~/.claude/CLAUDE.md`.
-
-**Project scope for Claude Code + Codex**:
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/install.sh | bash -s -- project
 ```
 
 This installs:
@@ -44,19 +38,14 @@ Existing files are backed up to `*.backup.<timestamp>` before overwrite.
 Starter artifact files are only created when absent, so project history
 is not clobbered.
 
+`install.sh` now defaults to repo-level install. It does not install to
+`~/.claude` unless you explicitly ask for `personal`.
+
 ---
 
 ## Manual install
 
-For Claude Code personal scope:
-
-```bash
-mkdir -p ~/.claude
-curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/CLAUDE.md \
-  -o ~/.claude/CLAUDE.md
-```
-
-For a project that should work in both Claude Code and Codex:
+For a repo or folder that should work in both Claude Code and Codex:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/CLAUDE.md \
@@ -72,10 +61,17 @@ Or clone the repo and copy what you want:
 
 ```bash
 git clone https://github.com/trivedi-vatsal/production-agent-md.git
-cp production-agent-md/CLAUDE.md ~/.claude/CLAUDE.md
-cp production-agent-md/CLAUDE.md ./AGENTS.md
-cp production-agent-md/templates/gotchas.md ./gotchas.md
-cp production-agent-md/templates/context-log.md ./context-log.md
+cd your-target-repo
+cp ../production-agent-md/CLAUDE.md ./CLAUDE.md
+cp ../production-agent-md/CLAUDE.md ./AGENTS.md
+cp ../production-agent-md/templates/gotchas.md ./gotchas.md
+cp ../production-agent-md/templates/context-log.md ./context-log.md
+```
+
+If you explicitly want a global Claude Code install anyway:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/install.sh | bash -s -- personal
 ```
 
 ---
@@ -115,16 +111,16 @@ To refresh the Codex mirror after changing `CLAUDE.md`:
 
 ## What's in CLAUDE.md
 
-| Section | Covers |
-|---|---|
-| Session Artifacts | `gotchas.md` and `context-log.md` conventions |
-| Planning | Plan-first discipline, <=3 clarifying questions, mid-task ambiguity |
-| Code Quality | Senior-review heuristic, no robotic comments |
-| Testing | Run existing tests, flag missing coverage, new-user verification |
-| Context Management | Sub-agent fan-out, re-read after compaction, chunked reads |
-| Edit Safety | Re-read before and after edits, exhaustive grep checklist |
-| Self-Correction | Log to `gotchas.md`, two-attempt rule |
-| Communication | Raw error data, execute on "do it", match working code |
+| Section            | Covers                                                              |
+| ------------------ | ------------------------------------------------------------------- |
+| Session Artifacts  | `gotchas.md` and `context-log.md` conventions                       |
+| Planning           | Plan-first discipline, <=3 clarifying questions, mid-task ambiguity |
+| Code Quality       | Senior-review heuristic, no robotic comments                        |
+| Testing            | Run existing tests, flag missing coverage, new-user verification    |
+| Context Management | Sub-agent fan-out, re-read after compaction, chunked reads          |
+| Edit Safety        | Re-read before and after edits, exhaustive grep checklist           |
+| Self-Correction    | Log to `gotchas.md`, two-attempt rule                               |
+| Communication      | Raw error data, execute on "do it", match working code              |
 
 ---
 

@@ -8,6 +8,10 @@ This repo is opinionated on how agents should behave in production
 codebases: planning, context management, edit safety, testing, and
 self-correction.
 
+Use it for real repositories where you want repeatable agent behavior and
+session memory. Skip it for one-off scripts, quick exploration, and
+throwaway prototypes.
+
 - Claude Code reads `CLAUDE.md`
 - Codex reads `AGENTS.md`
 - `CLAUDE.md` stays canonical
@@ -25,6 +29,12 @@ Run this inside the repo or folder where you want the files installed.
 curl -fsSL https://raw.githubusercontent.com/trivedi-vatsal/production-agent-md/main/install.sh | bash
 ```
 
+Verify the install:
+
+```bash
+ls CLAUDE.md AGENTS.md gotchas.md context-log.md
+```
+
 This installs:
 
 - `./CLAUDE.md`
@@ -37,6 +47,9 @@ The project install uses the canonical `CLAUDE.md`, mirrors it to
 Existing files are backed up to `*.backup.<timestamp>` before overwrite.
 Starter artifact files are only created when absent, so project history
 is not clobbered.
+
+If you want to clear old backups later, removing
+`CLAUDE.md.backup.*` and `AGENTS.md.backup.*` is safe cleanup.
 
 `install.sh` now defaults to repo-level install. It does not install to
 `~/.claude` unless you explicitly ask for `personal`.
@@ -94,21 +107,6 @@ production-agent-md/
 
 ---
 
-## How I use it
-
-- I edit `CLAUDE.md`
-- I mirror it to `AGENTS.md`
-- I copy the starter templates into project root when a repo needs
-  persistent session memory
-
-To refresh the Codex mirror after changing `CLAUDE.md`:
-
-```bash
-./scripts/sync-agents.sh
-```
-
----
-
 ## What's in CLAUDE.md
 
 | Section            | Covers                                                              |
@@ -141,7 +139,7 @@ here are just reusable seeds.
 
 ---
 
-## Customizing
+## How this repo is maintained
 
 Fork the repo, edit `CLAUDE.md`, run `./scripts/sync-agents.sh`, and point
 install commands at your fork.
